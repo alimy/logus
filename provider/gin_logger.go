@@ -1,11 +1,15 @@
 package provider
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/unisx/logus"
+)
 
 // GinLogger instances a Logger middleware that use logus write the logs to zap
 func GinLogger() gin.HandlerFunc {
 	return gin.HandlerFunc(func (context *gin.Context) {
 		// TODO
+		logus.Info("gin handle", logus.String("clientIP", context.ClientIP()))
 	})
 }
 
@@ -18,5 +22,6 @@ func GinErrorLogger() gin.HandlerFunc {
 func GinErrorLoggerT(typ gin.ErrorType) gin.HandlerFunc {
 	return gin.HandlerFunc(func (context *gin.Context) {
 		// TODO
+		logus.Info("gin handle", logus.String("clientIP", context.ClientIP()))
 	})
 }
